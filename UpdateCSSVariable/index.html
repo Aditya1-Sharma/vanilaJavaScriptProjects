@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Css Variable</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h4>Update Css Variable with
+        <span class="h1">
+            <h3>JavaScript</h3>
+        </span>
+    </h4>
+
+    <div class="controls">
+        <label for="spacing">Spacing:</label>
+            <input type="range" name="spacing" min="10" max="100" value="10" data-sizing = "px">
+        
+
+        <label for="blur">Blur:</label>
+            <input type="range" name="blur" min="0" max="25" value="10" data-sizing = "px">
+
+
+        <label for="base">Color:</label>
+            <input id="base" name="base" type="color" value="#ff9345" >
+        
+    </div>
+    <img  class="image" src="https://cdn.britannica.com/81/160781-050-8B7BF24D/Selena-Gomez-2010.jpg" alt="No image">
+
+    <script>
+        const inputs = document.querySelectorAll('.controls input');
+        function handleUpdate()
+        {
+            const suffix = this.dataset.sizing || '';
+            console.log(this.name);
+            document.documentElement.style.setProperty(`--${this.name}` , this.value + suffix);
+        }
+        inputs.forEach(input => input.addEventListener('change', handleUpdate));
+        inputs.forEach(input=>input.addEventListener('mousemove', handleUpdate));
+    </script>
+
+    
+</body>
+</html>
