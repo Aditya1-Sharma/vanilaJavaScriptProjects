@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flex Grid Exercise</title>
     <link rel="stylesheet" href="style.css">
+    
 </head>
 <body>
     <div class="panels">
@@ -35,25 +36,6 @@
         </div>
     </div>
 
-    <script>
-        const panels = document.querySelectorAll('.panel');
-
-        function toggleOpen(){
-            console.log("hi");
-            this.classList.toggle('open');
-        }
-
-        function toggleActive(e){
-            console.log(e.propertyName);
-            if(e.propertyName.includes('flex')){
-                this.classList.toggle('open-active');
-            }
-        }
-
-        panels.forEach(panel=>panel.addEventListener('click', toggleOpen));
-        panels.forEach(panel=>panel.addEventListener('transitionend', toggleActive));
-
-         
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
