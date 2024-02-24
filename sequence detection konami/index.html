@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Key Detection</title>
+    <script type="text/javascript" src="https://www.cornify.com/js/cornify.js"></script>
+    <link rel="icon" href="https://fav.farm/✅" />
+  </head>
+  <body>
+    <script>
+      const pressed = [];
+      const secretCode = "aditya";
+
+      window.addEventListener("keyup", (e) => {
+        console.log(e.key);
+        pressed.push(e.key);
+        pressed.splice(
+          -secretCode.length - 1,
+          pressed.length - secretCode.length
+        );
+        if (pressed.join("").includes(secretCode)) {
+          console.log("DING DING!");
+          cornify_add();
+        }
+        console.log(pressed);
+      });
+    </script>
+  </body>
+</html>
+
+<!-- <a href="http://www.cornify.com" onclick="cornify_add();return false;" title="Cornify"><img src="https://www.cornify.com/assets/cornify-button.png" width="82" height="25" border="0" alt="Cornify" /></a><script type="text/javascript" src="https://www.cornify.com/js/cornify.js"></script> -->
