@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="https://m.media-amazon.com/images/M/MV5BMjAwNTE2MDMyMl5BMl5BanBnXkFtZTgwMjAyODM3MTI@._V1_FMjpg_UX1000_.jpg">
+</head>
+<body>
+    <div class="words" contenteditable>
+    </div>
+
+    <script>
+          window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+            const recognition = new SpeechRecognition();
+            recognition.interimResults = true;
+            recognition.lang = 'en-Us';
+
+            let p = document.createElement('p');
+            const words = document.querySelector('.words');
+            words.appendChild(p);
+
+            recognition.addEventListener('result' , e=>{
+                const transcript = Array.from(e.results)
+                                        .map(result=>result[0])
+                                        .map(result=>result.transcript)
+                                        .join('');
+                console.log(transcript);
+                
+                if(e.results[0].isFinal){
+                    p = document.createElement('p');
+                    words.appendChild(p);
+                }
+
+                p.innerHTML = transcript;
+            });
+
+
+            recognition.addEventListener('end' , recognition.start);
+            recognition.start();
+    </script>
+    
+</body>
+</html>
